@@ -1,0 +1,32 @@
+<%= form_with(model: calculator) do |form| %>
+  <% if calculator.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(calculator.errors.count, "error") %> prohibited this calculator from being saved:</h2>
+
+      <ul>
+        <% calculator.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :body_weight, style: "display: block" %>
+    <%= form.text_field :body_weight %>
+  </div>
+
+  <div>
+    <%= form.label :goal_weight, style: "display: block" %>
+    <%= form.text_field :goal_weight %>
+  </div>
+
+  <div>
+    <%= form.label :protein, style: "display: block" %>
+    <%= form.text_field :protein %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @calculator %>
+
+<div>
+  <%= link_to "Edit this calculator", edit_calculator_path(@calculator) %> |
+  <%= link_to "Back to calculators", calculators_path %>
+
+  <%= button_to "Destroy this calculator", @calculator, method: :delete %>
+</div>

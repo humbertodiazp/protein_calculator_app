@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Calculators</h1>
+
+<div id="calculators">
+  <% @calculators.each do |calculator| %>
+    <%= render calculator %>
+    <p>
+      <%= link_to "Show this calculator", calculator %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New calculator", new_calculator_path %>
