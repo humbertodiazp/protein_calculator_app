@@ -3,8 +3,8 @@
 <%= render @calculator %>
 
 <div>
-  <%= link_to "Edit this calculator", edit_calculator_path(@calculator) %> |
-  <%= link_to "Back to calculators", calculators_path %>
+  <%= link_to "Edit", edit_calculator_path(@calculator) %> 
+  <%# <#%= link_to "Back to calculators", calculators_path %> 
 
-  <%= button_to "Destroy this calculator", @calculator, method: :delete %>
+  <%= button_to "New Calculation", @calculator, method: :delete %>
 </div>
