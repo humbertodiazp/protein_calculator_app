@@ -6,9 +6,9 @@
   <% @calculators.each do |calculator| %>
     <%= render calculator %>
     <p>
-      <%= link_to "Show this calculator", calculator %>
+      <%= link_to "Calculate", calculator %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New calculator", new_calculator_path %>
+<%= link_to "New Calculation", new_calculator_path %>
