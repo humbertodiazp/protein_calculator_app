@@ -19,13 +19,33 @@ class CalculatorsController < ApplicationController
   def edit
   end
 
+  #calculate difference of body and goal weights 
+  def calculate
+
+    if @calculator.goal_weight > @calculator.body_weight 
+       x = @calculator.body_weight - @calculator.goal_weight 
+    else 
+      x = @calculator.goal_weight - @calculator.body_weight 
+    end 
+
+   result = x - @calculator.protein 
+
+   return result
+
+  end
+
+
+  
+
+
+
   # POST /calculators or /calculators.json
   def create
     @calculator = Calculator.new(calculator_params)
 
     respond_to do |format|
       if @calculator.save
-        format.html { redirect_to calculator_url(@calculator), notice: "Calculator was successfully created." }
+        format.html { redirect_to calculator_url(@calculator), notice: "Calculation succesfully run." }
         format.json { render :show, status: :created, location: @calculator }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +72,7 @@ class CalculatorsController < ApplicationController
     @calculator.destroy
 
     respond_to do |format|
-      format.html { redirect_to calculators_url, notice: "Calculator was successfully destroyed." }
+      format.html { redirect_to calculators_url, notice: "Calculation was successfully destroyed." }
       format.json { head :no_content }
     end
   end
