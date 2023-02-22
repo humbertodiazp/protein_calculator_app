@@ -49,14 +49,12 @@ class CalculatorsController < ApplicationController
 
   def return_result 
     
-    
-      if @calculator.goal_weight > @calculator.body_weight 
-         x = @calculator.body_weight.to_i - @calculator.goal_weight.to_i
-      else 
-        x = @calculator.goal_weight.to_i - @calculator.body_weight.to_i
+      if @calculator.body_weight.to_i > @calculator.goal_weight.to_i
+        @return_result = @calculator.protein.to_i  - @calculator.goal_weight.to_i
+      else
+         @return_result =  @calculator.protein.to_i - @calculator.goal_weight.to_i 
       end 
   
-      @return_result = x - @calculator.protein.to_i 
   end
   
 
