@@ -7,11 +7,11 @@ include
 <div>
 
    <strong>Protein Deficit/Surplus:
-     <% return_result %>
+     <%= return_result %>
    </strong>
+
   <div><%= link_to "Edit", edit_calculator_path(@calculator) %> 
   <%# <#%= link_to "Back to calculators", calculators_path %> </div>
   
-
   <%= button_to "New Calculation", @calculator, method: :delete %>
 </div>
