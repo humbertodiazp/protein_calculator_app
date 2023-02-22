@@ -34,7 +34,7 @@ class CalculatorsController < ApplicationController
 
   end
 
-  
+  helper_method :return_result 
 
   
 
