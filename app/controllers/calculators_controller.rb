@@ -20,21 +20,22 @@ class CalculatorsController < ApplicationController
   end
 
   #calculate difference of body and goal weights 
-  def result 
 
-    if @calculator.goal_weight > @calculator.body_weight 
-       x = @calculator.body_weight - @calculator.goal_weight 
-    else 
-      x = @calculator.goal_weight - @calculator.body_weight 
-    end 
-
-   result = x - @calculator.protein 
-
-   return result
-
-  end
 
   helper_method :return_result 
+
+  def return_result 
+    
+      if @calculator.goal_weight > @calculator.body_weight 
+         x = @calculator.body_weight.to_i - @calculator.goal_weight.to_i
+      else 
+        x = @calculator.goal_weight.to_i - @calculator.body_weight.to_i
+      end 
+  
+      @return_result = x - @calculator.protein.to_i 
+  
+    end
+  
 
   
 
@@ -48,6 +49,7 @@ class CalculatorsController < ApplicationController
       if @calculator.save
         format.html { redirect_to calculator_url(@calculator), notice: "Calculation succesfully run." }
         format.json { render :show, status: :created, location: @calculator }
+        @return_result
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @calculator.errors, status: :unprocessable_entity }
