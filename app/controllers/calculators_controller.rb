@@ -20,7 +20,7 @@ class CalculatorsController < ApplicationController
   end
 
   #calculate difference of body and goal weights 
-  def calculate
+  def result 
 
     if @calculator.goal_weight > @calculator.body_weight 
        x = @calculator.body_weight - @calculator.goal_weight 
@@ -34,6 +34,7 @@ class CalculatorsController < ApplicationController
 
   end
 
+  
 
   
 
