@@ -24,18 +24,7 @@ class CalculatorsController < ApplicationController
 
   helper_method :return_result 
 
-  def return_result 
-    
-      if @calculator.goal_weight > @calculator.body_weight 
-         x = @calculator.body_weight.to_i - @calculator.goal_weight.to_i
-      else 
-        x = @calculator.goal_weight.to_i - @calculator.body_weight.to_i
-      end 
-  
-      @return_result = x - @calculator.protein.to_i 
-  
-    end
-  
+
 
   
 
@@ -44,18 +33,32 @@ class CalculatorsController < ApplicationController
   # POST /calculators or /calculators.json
   def create
     @calculator = Calculator.new(calculator_params)
-
+    
     respond_to do |format|
       if @calculator.save
+        
         format.html { redirect_to calculator_url(@calculator), notice: "Calculation succesfully run." }
         format.json { render :show, status: :created, location: @calculator }
-        @return_result
+        
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @calculator.errors, status: :unprocessable_entity }
       end
     end
   end
+
+  def return_result 
+    
+    
+      if @calculator.goal_weight > @calculator.body_weight 
+         x = @calculator.body_weight.to_i - @calculator.goal_weight.to_i
+      else 
+        x = @calculator.goal_weight.to_i - @calculator.body_weight.to_i
+      end 
+  
+      @return_result = x - @calculator.protein.to_i 
+  end
+  
 
   # PATCH/PUT /calculators/1 or /calculators/1.json
   def update
